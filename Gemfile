@@ -90,3 +90,8 @@ gem 'font-awesome-rails'
 
 # 検索機能とソート機能
 gem 'ransack'
+
+# 管理者機能
+gem 'rails_admin', '~> 2.0.0.beta'
+# 権限管理
+gem 'cancancan'

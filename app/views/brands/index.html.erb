@@ -1,2 +1,22 @@
-<h1>Brands#index</h1>
-<p>Find me in app/views/brands/index.html.erb</p>
+<%= render 'brand', brand: @brand %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ブランド</th>
+      <th>数量</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.brand_name %></td>
+        <td><%= brand.items.count %></td>
+        <td><%= link_to 'Edit', edit_brand_path(brand), class: "btn btn-sm btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

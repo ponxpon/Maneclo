@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_151421) do
+ActiveRecord::Schema.define(version: 2021_06_09_193138) do
 
   create_table "brands", force: :cascade do |t|
-    t.integer "clothes_id", null: false
-    t.string "brand_", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "brand_name"
+    t.integer "user_id"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "clothes_id", null: false
     t.string "category_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,10 +44,10 @@ ActiveRecord::Schema.define(version: 2021_06_07_151421) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.boolean "admin", default: false, null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

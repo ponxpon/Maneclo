@@ -9,7 +9,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto mx-3">
+      <ul class="navbar-nav mx-auto">
+        <% if user_signed_in? %>
+          <li><%= link_to "Items", items_path, class: 'nav-link' %></li>
+          <li><%= link_to "New", new_item_path, class: 'nav-link' %></li>
+          <li><%= link_to "Graph", items_graph_path, class: 'nav-link' %></li>
+          <li><%= link_to "Brand", brands_path, class: 'nav-link' %></li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li><%= link_to "About", homes_about_path, class: 'nav-link' %></li>
           <li><%= link_to "Contact", homes_contact_path, class: 'nav-link' %></li>

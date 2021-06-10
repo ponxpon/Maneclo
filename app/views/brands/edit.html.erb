@@ -1,0 +1,4 @@
+<%= render 'brand', brand: @brand %>
+
+<!--itemの数が0なら表示if文-->
+<td><%= link_to 'Destroy', brand_path(@brand), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>

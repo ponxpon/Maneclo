@@ -1,8 +1,11 @@
 <footer class='bg-dark text-light pt-3'>
   <div class='container'>
     <div class='row'>
-      <div class='mx-auto my-auto'>
+      <div class='mx-auto'>
         <p>ponxpon</p>
+        <% if user_signed_in? %>
+          <p><%= link_to '退会する', users_unsubscribe_path%></p>
+        <% end %>
       </div>
     </div>
   </div>

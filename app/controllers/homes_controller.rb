@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   def top
   end
   
-  # Manecloの紹介画面
+  # Maneclo紹介画面
   def about
   end
   
