@@ -1,2 +1,8 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<%= attachment_image_tag @item, :item_image, format: 'jpeg', size: "100x100" %>
+<p><%= @item.purchase_date %></p>
+<p>ブランド名:<%= @item.brand.brand_name %></p>
+<p>カテゴリー名:<%= @item.category.category_name %></p>
+<p><%= @item.introduction %></p>
+<p>¥<%= @item.price %></p>
+
+<%= link_to 'Edit', edit_item_path(@item), class: "btn btn-success" %>

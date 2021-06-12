@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
     @item = Item.new # 新規投稿用の空のインスタンス
   end
 
+    # グラフ表示画面
+  def graph
+  end
+
   # 服の新規登録
   def create
     # 登録済ブランド
@@ -50,10 +54,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_path
-  end
-
-  # グラフ表示画面
-  def graph
   end
 
   private
