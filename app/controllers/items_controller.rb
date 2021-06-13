@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # 服一覧画面
   def index
-    @items = Item.where(user_id: current_user.id).includes(:user).order("created_at DESC") # 自分が投稿したものを自分だけに新規投稿順に表示
+    @items = Item.where(user_id: current_user.id).includes(:user).order("created_at DESC") # 自分が登録したものを自分だけに新規登録順に表示
     # @q =Item.ransack(params[:q])
     # @items = @q.result(distinct: true)
   end
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
     # グラフ表示画面
   def graph
-    # @pie = Item.where(user_id: current_user.id).group(:category_id).sum(:price)
+    # @pie = Item.where(user_id: current_user.id).group(:category_id).sum(:price)　この記述ではカテゴリーidで表示されカテゴリー名で表示されないので下の記述に修正
     # カテゴリー別価格の円グラフ　自分が登録した服をカテゴリーで分けて、カテゴリー別の総価格を円グラフで表示
     @pie = Item.where(user_id: current_user.id).group(:category_id).select("category_id, sum(price) as price_count").map { |m| [m.category.category_name, m.price_count] }.to_h
     # カテゴリー別数の棒グラフ　自分が登録した服をカテゴリーで分けて、カテゴリー別の総数を棒グラフで表示
