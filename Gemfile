@@ -95,3 +95,6 @@ gem 'ransack'
 gem 'rails_admin', '~> 2.0.0.beta'
 # 権限管理
 gem 'cancancan'
+
+# グラフ表示
+gem 'chartkick'

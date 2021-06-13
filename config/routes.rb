@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :items
   get 'items/graph'
+  resources :items
   resources :brands, only: [:index, :create, :edit, :update, :destroy]
   resources :categories, only: [:index, :create, :update]
   resources :users, only: [:index, :update]
