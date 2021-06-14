@@ -1,2 +1,13 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div style="background: url(<%= asset_path "top_image.jpg" %>); height:700px; background-size:cover;">
+  <div class="container text-center text-white">
+    <h1>Maneclo</h1>
+    <h1>
+      <%= link_to new_user_registration_path do %>
+        <button class="btn btn-outline-light mx-3" >Sign up</button>
+      <% end %>
+      <%= link_to new_user_session_path do %>
+        <button class="btn btn-outline-light mx-3" >Login</button>
+      <% end %>
+    </h1>
+  </div>
+</div>
