@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_193138) do
+ActiveRecord::Schema.define(version: 2021_06_16_104702) do
 
   create_table "brands", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_193138) do
     t.integer "brand_id", null: false
     t.integer "category_id", null: false
     t.string "item_image_id"
-    t.string "price", null: false
+    t.integer "price", null: false
     t.text "introduction"
     t.string "purchase_date"
     t.datetime "created_at", null: false

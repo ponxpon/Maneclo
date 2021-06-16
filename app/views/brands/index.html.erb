@@ -1,22 +1,25 @@
 <%= render 'brand', brand: @brand %>
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>ブランド</th>
+          <th>数量</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>ブランド</th>
-      <th>数量</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @brands.each do |brand| %>
-      <tr>
-        <td><%= brand.brand_name %></td>
-        <td><%= brand.items.count %></td>
-        <td><%= link_to 'Edit', edit_brand_path(brand), class: "btn btn-sm btn-success" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @brands.each do |brand| %>
+          <tr>
+            <td><%= brand.brand_name %></td>
+            <td><%= brand.items.count %></td>
+            <td><%= link_to 'Edit', edit_brand_path(brand), class: "btn btn-sm btn-success" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 

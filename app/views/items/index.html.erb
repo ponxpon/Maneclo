@@ -1,13 +1,32 @@
+<div class="card-list-containar">
+  <!--search_form_forはRansack専用の検索ヘルパーメソッド-->
+  <%= search_form_for @q do |f| %>
+    <!--複数カラムの検索にはカラム名_or_カラム名-->
+    <%= f.label :brand_brand_name_or_category_category_name, "キーワード検索" %>
+    <!--contは部分一致-->
+    <%= f.search_field :brand_brand_name_or_category_category_name_cont %>
+    <%= f.submit "検索" %>
+  <% end %>
+  <!--昇順降順のソート機能-->
+  <p><%= sort_link(@q, :brand_id, "ブランド") %></p>
+  <p><%= sort_link(@q, :category_id, "カテゴリー") %></p>
+  <p><%= sort_link(@q, :price, "価格") %></p>
 
-<% @items.each do |item| %>
-  <div>
-    <%= link_to item_path(item) do %>
-      <%= attachment_image_tag item, :item_image, format: 'jpeg', size: "100x100" %>
-      <p>ブランド名:<%= item.brand.brand_name %></p>
-      <p>カテゴリー名:<%= item.category.category_name %></p>
-      <p>¥<%= item.price %></p>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= link_to item_path(item) do %>
+            <%= attachment_image_tag item, :item_image, format: 'jpeg', size: "300x300", fallback: "no-image.jpg" %>
+            <div class="card-body text-body">
+              <p class="card-text"><%= item.brand.brand_name %></p>
+              <p class="card-text"><%= item.category.category_name %></p>
+              <p class="card-text">¥<%= item.price %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
-<% end %>
-
-<%= paginate @items %>
+  <%= paginate @items %>
+</div>

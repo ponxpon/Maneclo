@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   # 服一覧画面
   def index
-    # 自分が登録したものを自分だけに新規登録順に表示　ページング機能:1ページに表示するレコード数を12件に変更
-    @items = Item.where(user_id: current_user.id).includes(:user).page(params[:page]).reverse_order.per(12)
-    # @q =Item.ransack(params[:q])
-    # @items = @q.result(distinct: true)
+    # @items = Item.where(user_id: current_user.id).includes(:user).page(params[:page]).reverse_order.per(12)
+    # ransackメソッドは検索ヘルパーメソッド　自分が登録したものを自分だけに新規登録順に表示　ページング機能:1ページに表示するレコード数を12件に変更
+    @q =Item.where(user_id: current_user.id).includes(:user).page(params[:page]).reverse_order.per(12).ransack(params[:q])
+    # resultメソッドは検索結果を返すヘルパーメソッド　distinct: trueは重複する検索結果を除外する
+    @items = @q.result(distinct: true)
   end
 
   # 服新規登録画面

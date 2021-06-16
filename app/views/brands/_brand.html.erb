@@ -1,9 +1,13 @@
-<%= form_with model: brand, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :ブランド名 %>
-    <%= f.text_field :brand_name, class: 'form-control' %>
+<div class="container">
+  <div class="row">
+    <%= form_with model: brand, local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :ブランド名 %>
+        <%= f.text_field :brand_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
-<% end %>
+</div>
