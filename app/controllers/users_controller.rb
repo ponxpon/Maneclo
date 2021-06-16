@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   # 退会確認画面
   def unsubscribe
+    @user = current_user
   end
 
   # 退会機能
-  def withdraw
+  def update
     @user = current_user
     # is_deletedをtrueに変更することにより退会する
     @user.update(is_deleted: true)
