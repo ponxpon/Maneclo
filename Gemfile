@@ -98,3 +98,8 @@ gem 'cancancan'
 
 # グラフ表示
 gem 'chartkick'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
