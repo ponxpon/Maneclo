@@ -6,3 +6,4 @@
 <p>¥<%= @item.price %></p>
 
 <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-success" %>
+<%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>

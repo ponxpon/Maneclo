@@ -29,12 +29,12 @@ class ItemsController < ApplicationController
       @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
       @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
       @item.save
-    # # 新規登録ブランド
+    # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
       @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
       @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
       @brand = Brand.new(brand_params) #ブランドを新規登録
-      @brand.user_id = current_user.id
+      @brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
       @item.brand = @brand #アイテムのブランドに作成したブランドを紐付ける
       @item.save
     end
@@ -53,8 +53,20 @@ class ItemsController < ApplicationController
 
   # 服の更新
   def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
+    # 新規登録ブランド
+    if params[:item][:brands] == "new_brands"
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+      brand = Brand.new(brand_params) #ブランドを新規登録
+      brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
+      @item.brand = brand #アイテムのブランドに作成したブランドを紐付ける
+      @item.save
+    # 登録済ブランド
+    elsif params[:item][:brands] == "existing_brands"
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+
+    end
     redirect_to items_path
   end
 

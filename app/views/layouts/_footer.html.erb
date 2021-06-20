@@ -1,14 +1,14 @@
 <footer>
-  <nav class="navbar navbar-dark bg-dark">
-    <div class='container'>
-      <div class='row'>
-        <ul class="navbar-nav">
-          <li class="mx-auto">ponxpon</li>
-          <% if user_signed_in? %>
-            <li><%= link_to '退会する', users_unsubscribe_path%></li>
-          <% end %>
-        </ul>
+  <div class='container mt-3'>
+    <div class='row'>
+      <div class='mx-auto'>
+        <p>CopyRight ponxpon</p>
+      </div>
+      <div class="text-right">
+        <% if user_signed_in? %>
+          <%= link_to '退会', users_unsubscribe_path, class: 'text-dark' %>
+        <% end %>
       </div>
     </div>
-  </nav>
+  </div>
 </footer>

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   # 退会確認画面
   def unsubscribe
-    @user = current_user
   end
 
   # 退会機能

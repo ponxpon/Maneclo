@@ -1,27 +1,47 @@
-<h1>Edit</h1>
-<%= form_with model: @item, local:true do |f| %>
-  <h4>画像</h4>
-    <%= f.attachment_field :item_image %>
+<div class="container">
+  <h1 class="ml-4 my-4">Edit</h1>
+  <%= form_with model: @item, local:true do |f| %>
 
-  <h4>ブランド名</h4>
-    <!--登録されているブランドから選択-->
-    <%= f.radio_button :brands, "existing_brands", checked: true %>
-    <%= f.label :"登録済ブランドから撰択" %><br>
-    <%= f.collection_select :brand_id, current_user.brands, :id, :brand_name, prompt: "選択してください" %><br>
-    <!--新しいブランドを登録-->
-    <%= f.radio_button :brands, "new_brands" %>
-    <%= f.label :"新しいブランド"%><br>
-    <%= text_field_tag 'brands[brand_name]', "" %>
+    <div class="ml-5 my-3">
+      <h4>画像</h4>
+      <%= f.attachment_field :item_image %>
+    </div>
 
-  <h4>種類</h4>
-  <!--登録されているカテゴリーから選択-->
-    <%= f.collection_select :category_id, Category.all, :id, :category_name, prompt: "選択してください" %>
-  <h4>価格</h4>
-    <%= f.text_area :price %>
-  <h4>説明</h4>
-    <%= f.text_area :introduction %>
-  <h4>購入日</h4>
-    <%= f.text_area :purchase_date %>
+    <div class="ml-5 my-3">
+    <h4>ブランド名</h4>
+      <!--登録されているブランドから選択-->
+      <%= f.radio_button :brands, "existing_brands", checked: true %>
+      <%= f.label :"登録済ブランドから撰択" %><br>
+      <%= f.collection_select :brand_id, current_user.brands, :id, :brand_name, prompt: "選択してください" %><br>
+      <!--新しいブランドを登録-->
+      <%= f.radio_button :brands, "new_brands" %>
+      <%= f.label :"新しいブランド"%><br>
+      <%= text_field_tag 'brands[brand_name]', "" %>
+    </div>
 
-    <%= f.submit 'Up date' %>
-<% end %>
+    <div class="ml-5 my-3">
+    <h4>種類</h4>
+    <!--登録されているカテゴリーから選択-->
+      <%= f.collection_select :category_id, Category.all, :id, :category_name, prompt: "選択してください" %>
+    </div>
+
+    <div class="ml-5 my-3">
+    <h4>価格</h4>
+      <%= f.text_area :price %>
+    </div>
+
+    <div class="ml-5 my-3">
+    <h4>説明</h4>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <div class="ml-5 my-3">
+    <h4>購入日</h4>
+      <%= f.text_area :purchase_date %>
+    </div>
+
+    <div class="ml-5 my-3">
+      <%= f.submit '登録' %>
+    </div>
+  <% end %>
+</div>

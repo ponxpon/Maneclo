@@ -1,7 +1,7 @@
 class BrandsController < ApplicationController
   # ブランド名一覧画面
   def index
-    @newbrand = Brand.new
+    @brand = Brand.new
     @brands = Brand.where(user_id: current_user.id).includes(:user).order("created_at DESC") # 自分が作成したブランドを自分だけに新規作成順に表示
   end
 
