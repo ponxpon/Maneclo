@@ -1,4 +1,4 @@
-<header>
+<header class="sticky-top">
   <!--ナビゲーションバー-->
   <nav class="navbar navbar-expand-lg navbar-dark text-light" style="background-color:#1C4946;">
     <%= link_to root_path, class: 'navbar-brand' do %>
@@ -9,7 +9,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mx-auto">
+      <ul class="navbar-nav mynavbar-center">
         <!--ユーザがログインしている時に表示-->
         <% if user_signed_in? %>
           <li><%= link_to "Items", items_path, class: 'nav-link' %></li>
@@ -18,7 +18,7 @@
           <li><%= link_to "Brand", brands_path, class: 'nav-link' %></li>
         <% end %>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mynavbar-right">
         <!--ユーザがログインしている時に表示-->
         <% if user_signed_in? %>
           <li><%= link_to "About", homes_about_path, class: 'nav-link' %></li>
