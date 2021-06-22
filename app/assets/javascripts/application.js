@@ -16,7 +16,7 @@
 //=
 //= require rails-ujs
 //= require activestorage
-// require turbolinks
+// require turbolinks // 実機テストを行なった際に、sign_up画面がmacbookとandroidでは表示されたが、ipadとiphoneでは表示されなかった。そこで、ターボリンクスを外してみると正常に動作されたため外している
 //= require_tree .
 //=
 //= require chartkick
