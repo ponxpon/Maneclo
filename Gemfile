@@ -99,7 +99,11 @@ gem 'cancancan'
 # グラフ表示
 gem 'chartkick'
 
+# デプロイ
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# エラーメッセージ日本語化
+gem 'rails-i18n'

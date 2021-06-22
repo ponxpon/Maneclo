@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <% if obj.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% obj.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+ </div>
+</div>

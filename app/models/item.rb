@@ -7,4 +7,9 @@ class Item < ApplicationRecord
   belongs_to :brand
   belongs_to :category
 
+  # バリデーション
+  # validates :brand_id, presence: true
+  # attr_accessor :brand_name
+  validates :category_id, presence: true
+  validates :price, presence: true
 end

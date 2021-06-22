@@ -9,13 +9,23 @@ class BrandsController < ApplicationController
   def create
     @brand = Brand.new(brand_params)
     @brand.user_id =current_user.id
-    @brand.save
-    redirect_to brands_path
+    if @brand.save # saveメソッドの結果がtrueならリダイレクト
+      redirect_to brands_path
+    else # falseならブランド一覧ページを再表示
+      @brands = Brand.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+      render :index
+    end
   end
 
   # ブランド名編集画面
   def edit
     @brand = Brand.find(params[:id])
+    # 他人のデータを編集不可　他人のブランド名編集画面には遷移しない
+    if @brand.user == current_user
+      render "edit"
+    else
+      redirect_to items_path
+    end
   end
 
   # ブランド名の更新

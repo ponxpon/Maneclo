@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      item: 服
+      brand: ブランド
+    attributes:
+      item:
+        brand: ブランド
+        category: カテゴリー
+        price: 価格
+      brand:
+        brand_name: ブランド名

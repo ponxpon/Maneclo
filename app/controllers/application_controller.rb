@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # ログイン認証が成功していないとtop,about,contact,login,signup以外の画面を表示できない
+  before_action :authenticate_user!,except: [:top, :about, :contact]
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

@@ -1,8 +1,7 @@
 <%= render 'brand', brand: @brand %>
 
-<!--itemの数が0なら表示if文-->
 <div class="container">
   <div class="row">
-    <td><%= link_to 'Destroy', brand_path(@brand), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+    <td><%= link_to 'Destroy', brand_path(@brand), method: :delete, data: { confirm: 'ブランドの服も全て消えますが、本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
   </div>
 </div>
