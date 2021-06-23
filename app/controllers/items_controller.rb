@@ -36,8 +36,8 @@ class ItemsController < ApplicationController
     # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
       @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
-      if !brand_params[:brand_name].present? && @item.brand_id.nil? #別のテーブルのカラムをバリデーションしている
-        @item.errors.add(:brand_name, 'を入力してください')
+      if !brand_params[:brand_name].present? && @item.brand_id.nil? #ブランド名がない＆ブランドidが存在しない時に処理
+        @item.errors.add(:brand_name, 'を入力してください') #エラーメッセージ
         render :new and return #returnをしないとエラーが発生する
       end
       @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
@@ -80,10 +80,13 @@ class ItemsController < ApplicationController
     if params[:item][:brands] == "existing_brands"
       @item = Item.find(params[:id])
       @item.update(item_params)
-      redirect_to items_path
     # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
       @item = Item.find(params[:id])
+      if !brand_params[:brand_name].present? #ブランド名がない時に処理
+        @item.errors.add(:brand_name, 'を入力してください') #エラーメッセージ
+        render :new and return #returnをしないとエラーが発生する
+      end
       @item.update(item_params)
       brand = Brand.new(brand_params) #ブランドを新規登録
       brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
