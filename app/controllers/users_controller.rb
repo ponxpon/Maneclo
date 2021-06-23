@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   # 退会機能
   def update
+    # ゲストユーザは削除できないようにする
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは削除できません。' and return
+    end
     @user = current_user
     # is_deletedをtrueに変更することにより退会する
     @user.update(is_deleted: true)

@@ -9,5 +9,10 @@
         <button class="btn btn-outline-light mx-3" >Login</button>
       <% end %>
     </h1>
+    <h1>
+      <%= link_to users_guest_sign_in_path, method: :post do %>
+        <button class="btn btn-outline-light mx-3" >guest login（閲覧用）</button>
+      <% end %>
+    </h1>
   </div>
 </div>
