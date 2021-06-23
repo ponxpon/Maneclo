@@ -29,15 +29,16 @@ class ItemsController < ApplicationController
       @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
       @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
       if @item.save # saveメソッドの結果がtrueならリダイレクト
-        redirect_to items_path
+        redirect_to items_path, notice: "登録が完了しました。"
       else # falseなら服登録ページを再表示
+        flash[:alert] = "必須項目を入力してください。"
         render :new
       end
     # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
       @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
       if !brand_params[:brand_name].present? && @item.brand_id.nil? #ブランド名がない＆ブランドidが存在しない時に処理
-        @item.errors.add(:brand_name, 'を入力してください') #エラーメッセージ
+        flash[:alert] = "必須項目を入力してください。"
         render :new and return #returnをしないとエラーが発生する
       end
       @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
@@ -45,8 +46,9 @@ class ItemsController < ApplicationController
       brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
       @item.brand = brand #アイテムのブランドに作成したブランドを紐付ける
       if @item.save # saveメソッドの結果がtrueならリダイレクト
-        redirect_to items_path
+        redirect_to items_path, notice: "登録が完了しました。"
       else # falseなら服登録ページを再表示
+        flash[:alert] = "必須項目を入力してください。"
         render :new
       end
     end
@@ -59,7 +61,7 @@ class ItemsController < ApplicationController
     if @item.user == current_user
       render "show"
     else
-      redirect_to items_path
+      redirect_to items_path, alert: "他人の服を見ることはできません。"
     end
   end
 
@@ -70,7 +72,7 @@ class ItemsController < ApplicationController
     if @item.user == current_user
       render "edit"
     else
-      redirect_to items_path
+      redirect_to items_path, alert: "他人の服のデータを編集することはできません。"
     end
   end
 
@@ -84,7 +86,7 @@ class ItemsController < ApplicationController
     elsif params[:item][:brands] == "new_brands"
       @item = Item.find(params[:id])
       if !brand_params[:brand_name].present? #ブランド名がない時に処理
-        @item.errors.add(:brand_name, 'を入力してください') #エラーメッセージ
+        flash[:alert] = "必須項目を入力してください" #エラーメッセージ
         render :new and return #returnをしないとエラーが発生する
       end
       @item.update(item_params)
@@ -93,14 +95,14 @@ class ItemsController < ApplicationController
       @item.brand = brand #アイテムのブランドに作成したブランドを紐付ける
       @item.save
     end
-    redirect_to items_path
+    redirect_to items_path, notice: "更新が完了しました。"
   end
 
   # 服の削除
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to items_path, notice: "服の削除が完了しました。"
   end
 
   private

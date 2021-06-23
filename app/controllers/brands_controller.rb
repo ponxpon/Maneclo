@@ -10,9 +10,10 @@ class BrandsController < ApplicationController
     @brand = Brand.new(brand_params)
     @brand.user_id =current_user.id
     if @brand.save # saveメソッドの結果がtrueならリダイレクト
-      redirect_to brands_path
+      redirect_to brands_path, notice: "登録が完了しました。"
     else # falseならブランド一覧ページを再表示
       @brands = Brand.where(user_id: current_user.id).includes(:user).order("created_at DESC")
+      flash[:alert] = "ブランド名を入力してください。"
       render :index
     end
   end
@@ -24,21 +25,25 @@ class BrandsController < ApplicationController
     if @brand.user == current_user
       render "edit"
     else
-      redirect_to items_path
+      redirect_to brands_path, alert: "他人のブランド名を編集することはできません。"
     end
   end
 
   # ブランド名の更新
   def update
     @brand = Brand.find(params[:id])
-    @brand.update(brand_params)
-    redirect_to brands_path
+    if @brand.update(brand_params)
+      redirect_to brands_path, notice: "ブランド名の更新が完了しました。"
+    else
+      flash[:alert] = "ブランド名を入力してください。"
+      render :edit
+    end
   end
 
   def destroy
     @brand = Brand.find(params[:id])
     @brand.destroy
-    redirect_to brands_path
+    redirect_to brands_path, notice: "ブランド名の削除が完了しました。"
   end
 
 

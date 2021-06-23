@@ -16,7 +16,7 @@ module Maneclo
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # rails_adminとエラーメッセージの日本語化
+    # 日本語化
     config.i18n.default_locale = :ja
   end
 end

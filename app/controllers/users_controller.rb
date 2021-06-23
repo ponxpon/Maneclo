@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user.update(is_deleted: true)
     # セッション情報を削除
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "退会処理を実行いたしました。"
   end
 
   private
