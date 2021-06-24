@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
     elsif params[:item][:brands] == "new_brands"
       @item = Item.find(params[:id])
       if !brand_params[:brand_name].present? #ブランド名がない時に処理
-        flash[:alert] = "必須項目を入力してください" #エラーメッセージ
+        flash[:alert] = "必須項目を入力してください"
         render :new and return #returnをしないとエラーが発生する
       end
       @item.update(item_params)

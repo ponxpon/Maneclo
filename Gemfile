@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# rubyのバージョン
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,15 +37,21 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# 開発環境とテスト環境のみ対象
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # テスト
   gem 'rspec-rails'
+  # テストデータの作成をサポートする
+  gem "factory_bot_rails"
+  # テスト用のダミーデータを用意する
+  gem 'faker'
   # デバック
   gem 'pry-byebug'
 end
 
+# 開発環境のみ対象
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -56,6 +63,7 @@ group :development do
   gem 'rubocop', require: false
 end
 
+# テスト環境のみ対象
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
@@ -99,11 +107,14 @@ gem 'cancancan'
 # グラフ表示
 gem 'chartkick'
 
-# デプロイ
+# デプロイに必要
+# プロジェクトごとにファイルベースで環境変数を管理できる
 gem 'dotenv-rails'
+# 本番環境のみ対象
 group :production do
+  # 本番環境はSQLiteの代わりにMySQLを使用
   gem 'mysql2'
 end
 
-# エラーメッセージ日本語化
+# 日本語化
 gem 'rails-i18n'
