@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   # ログイン認証が成功していないとtop,about,contact,login,signup以外の画面を表示できない
-  before_action :authenticate_user!,except: [:top, :about, :contact]
+  before_action :authenticate_user!, except: [:top, :about, :contact]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+
   # ユーザ新規登録でユーザ名のデータ操作許可
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
@@ -20,11 +21,12 @@ class ApplicationController < ActionController::Base
     items_path
   end
 
-   # 会員の論理削除のための記述。退会後は同じアカウントでは利用できない。
+  # 会員の論理削除のための記述。退会後は同じアカウントでは利用できない。
   def reject_user
-    @user = User.find_by(name: params[:user][:name]) #ログイン時に入力された名前に対応するユーザーが存在するか探す。
+    @user = User.find_by(name: params[:user][:name]) # ログイン時に入力された名前に対応するユーザーが存在するか探す。
     if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false) #入力されたパスワードが正しいことを確認。＠userのactive_for_authentication?メソッドがfalseであるかどうか。
+      # 入力されたパスワードが正しいことを確認。＠userのactive_for_authentication?メソッドがfalseであるかどうか。
+      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
         redirect_to new_user_registration
       else

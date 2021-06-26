@@ -60,7 +60,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # 静的コード解析
-  gem 'rubocop', require: false
+  gem 'rubocop-airbnb'
 end
 
 # テスト環境のみ対象
@@ -84,7 +84,7 @@ gem "refile-mini_magick"
 gem 'devise'
 
 # ページング機能
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 # kaminariをカスタマイズ
 gem 'kaminari-bootstrap', '~> 3.0.1'
 

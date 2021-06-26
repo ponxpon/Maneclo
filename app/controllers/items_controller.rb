@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new # 新規投稿用の空のインスタンス
   end
 
-    # グラフ表示画面
+  # グラフ表示画面
   def graph
     # @pie = Item.where(user_id: current_user.id).group(:category_id).sum(:price)　この記述ではカテゴリーidで表示されカテゴリー名で表示されないので下の記述に修正
     # カテゴリー別価格の円グラフ　自分が登録した服をカテゴリーで分けて、カテゴリー別の総価格を円グラフで表示
@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
   def create
     # 登録済ブランド
     if params[:item][:brands] == "existing_brands"
-      @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
-      @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
+      @item = Item.new(item_params) # フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
+      @item.user_id = current_user.id # deviseのメソッドを使ってログインしている自分のidを代入
       if @item.save # saveメソッドの結果がtrueならリダイレクト
         redirect_to items_path, notice: "登録が完了しました。"
       else # falseなら服登録ページを再表示
@@ -36,15 +36,15 @@ class ItemsController < ApplicationController
       end
     # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
-      @item = Item.new(item_params) #フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
-      if !brand_params[:brand_name].present? && @item.brand_id.nil? #ブランド名がない＆ブランドidが存在しない時に処理
+      @item = Item.new(item_params) # フォームから送られてきたデータをストロングパラメータを経由して＠itemに代入
+      if !brand_params[:brand_name].present? && @item.brand_id.nil? # ブランド名がない＆ブランドidが存在しない時に処理
         flash[:alert] = "必須項目を入力してください。"
-        render :new and return #returnをしないとエラーが発生する
+        render :new and return # returnをしないとエラーが発生する
       end
-      @item.user_id = current_user.id #deviseのメソッドを使ってログインしている自分のidを代入
-      brand = Brand.new(brand_params) #ブランドを新規登録
-      brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
-      @item.brand = brand #アイテムのブランドに作成したブランドを紐付ける
+      @item.user_id = current_user.id # deviseのメソッドを使ってログインしている自分のidを代入
+      brand = Brand.new(brand_params) # ブランドを新規登録
+      brand.user_id = current_user.id # ブランドのuser_idカラムに登録したユーザのuser.idを代入
+      @item.brand = brand # アイテムのブランドに作成したブランドを紐付ける
       if @item.save # saveメソッドの結果がtrueならリダイレクト
         redirect_to items_path, notice: "登録が完了しました。"
       else # falseなら服登録ページを再表示
@@ -85,14 +85,14 @@ class ItemsController < ApplicationController
     # 新規登録ブランド
     elsif params[:item][:brands] == "new_brands"
       @item = Item.find(params[:id])
-      if !brand_params[:brand_name].present? #ブランド名がない時に処理
+      if !brand_params[:brand_name].present? # ブランド名がない時に処理
         flash[:alert] = "必須項目を入力してください"
-        render :new and return #returnをしないとエラーが発生する
+        render :new and return # returnをしないとエラーが発生する
       end
       @item.update(item_params)
-      brand = Brand.new(brand_params) #ブランドを新規登録
-      brand.user_id = current_user.id #ブランドのuser_idカラムに登録したユーザのuser.idを代入
-      @item.brand = brand #アイテムのブランドに作成したブランドを紐付ける
+      brand = Brand.new(brand_params) # ブランドを新規登録
+      brand.user_id = current_user.id # ブランドのuser_idカラムに登録したユーザのuser.idを代入
+      @item.brand = brand # アイテムのブランドに作成したブランドを紐付ける
       @item.save
     end
     redirect_to items_path, notice: "更新が完了しました。"

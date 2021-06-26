@@ -2,13 +2,14 @@ class BrandsController < ApplicationController
   # ブランド名一覧画面
   def index
     @brand = Brand.new
-    @brands = Brand.where(user_id: current_user.id).includes(:user).order("created_at DESC") # 自分が作成したブランドを自分だけに新規作成順に表示
+    # 自分が作成したブランドを自分だけに新規作成順に表示
+    @brands = Brand.where(user_id: current_user.id).includes(:user).order("created_at DESC")
   end
 
   # ブランド名の新規登録
   def create
     @brand = Brand.new(brand_params)
-    @brand.user_id =current_user.id
+    @brand.user_id = current_user.id
     if @brand.save # saveメソッドの結果がtrueならリダイレクト
       redirect_to brands_path, notice: "登録が完了しました。"
     else # falseならブランド一覧ページを再表示
@@ -46,8 +47,8 @@ class BrandsController < ApplicationController
     redirect_to brands_path, notice: "ブランド名の削除が完了しました。"
   end
 
-
   private
+
   def brand_params
     params.require(:brand).permit(:brand_name, :user_id)
   end

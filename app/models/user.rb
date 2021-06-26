@@ -10,9 +10,10 @@ class User < ApplicationRecord
 
   # ゲストログイン機能
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user| #このemailを使ってログインする。アカウントがなければ作成してログインする。
-      user.password = SecureRandom.urlsafe_base64 #パスワードをランダム文字列
-      user.name = "ゲスト" #登録時にnameのカラムがあるので、ゲストに設定
+    # このemailを使ってログインする。アカウントがなければ作成してログインする。
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64 # パスワードをランダム文字列
+      user.name = "ゲスト" # 登録時にnameのカラムがあるので、ゲストに設定
     end
   end
 

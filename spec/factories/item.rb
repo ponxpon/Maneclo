@@ -6,6 +6,6 @@ FactoryBot.define do
     # カラム名｛ 値 ｝の形になる
     category_id { Faker::Number.digit }
     item_image_id { Faker::Number.digit }
-    price { Faker::Number.number(digits: 4) } #先頭の桁が0にならない指定された桁数を生成する
+    price { Faker::Number.number(digits: 4) } # 先頭の桁が0にならない指定された桁数を生成する
   end
 end

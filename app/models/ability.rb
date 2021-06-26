@@ -7,7 +7,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     # user ||= User.new # guest user (not logged in)
-    
+
     # 管理者権限を持つユーザに管理画面へのアクセスと全てのモデルに対しての全ての操作を許可
     if user.try(:admin?)
       can :access, :rails_admin
