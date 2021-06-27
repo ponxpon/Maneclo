@@ -19,12 +19,15 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-  *{
+* {
   margin: 0;
   padding: 0;
-  }
+}
 
-  .box1 {
+.home-text {
+}
+
+.box1 {
   padding: 1em 1em;
   margin: 2em 0;
   background: whitesmoke;
@@ -32,28 +35,52 @@
   border-right: double 7px #DF2935;
 }
 
- .navbar{
+.navbar {
   position: relative;
- }
+}
 
-//ハンバーガーメニューでの条件分岐　リンクを中央と右寄せにする際に使ったCSS　この記述をしないとハンバーガーメニューの動作が少しおかしくなる
- @media (min-width: 992px){ //横幅が992px以上だと有効
-   .mynavbar-center{
+// ハンバーガーメニューでの条件分岐　リンクを中央と右寄せにする際に使ったCSS　この記述をしないとハンバーガーメニューの動作が少しおかしくなる
+@media (min-width: 992px) { // 横幅が992px以上だと有効
+  .header-navbar-center{
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-   }
-   .mynavbar-right{
+  }
+  .header-navbar-right {
     position: absolute;
     right: 0;
-   }
- }
+  }
+}
 
- footer{
-    bottom: 0; /*下に固定*/
+footer {
+  bottom: 0; // 下に固定
+}
+
+.footer-text-center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 // アラートの文字を中央に固定
 .alert {
 	text-align: center;
+}
+
+.about-image-group {
+  margin: 40px 0;
+}
+
+.about_image1 {
+  background-image: image-url("");
+  height: 530px;
+  background-size: cover;
+  background-position: center;
+}
+
+.about_image2 {
+  background-image: image-url("");
+  height: 530px;
+  background-size: cover;
+  background-position: center;
 }
