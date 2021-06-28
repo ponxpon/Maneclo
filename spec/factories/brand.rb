@@ -3,6 +3,7 @@
 FactoryBot.define do
   # どのモデルに対してデータ定義を行うのか記す
   factory :brand do
+    # アソシエーション
     association :user
     # カラム名｛ 値 ｝の形になる
     # user_id { Faker::Number.digit }

@@ -71,16 +71,18 @@ footer {
   margin: 40px 0;
 }
 
-.about_image1 {
-  background-image: image-url("");
-  height: 530px;
+.about-image1 {
+  background-image: image-url("about-image1.png");
+  width: auto;
+  height: 600px;
   background-size: cover;
   background-position: center;
 }
 
-.about_image2 {
-  background-image: image-url("");
-  height: 530px;
+.about-image2 {
+  background-image: image-url("about-image2.png");
+  width: auto;
+  height: 600px;
   background-size: cover;
   background-position: center;
 }

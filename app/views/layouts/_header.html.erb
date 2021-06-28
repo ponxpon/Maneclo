@@ -9,7 +9,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mynavbar-center">
+      <ul class="navbar-nav header-navbar-center">
         <!--ユーザがログインしている時に表示-->
         <% if user_signed_in? %>
           <li><%= link_to "Items", items_path, class: 'nav-link' %></li>
@@ -18,7 +18,7 @@
           <li><%= link_to "Brand", brands_path, class: 'nav-link' %></li>
         <% end %>
       </ul>
-      <ul class="navbar-nav mynavbar-right">
+      <ul class="navbar-nav header-navbar-right">
         <!--ユーザがログインしている時に表示-->
         <% if user_signed_in? %>
           <li><%= link_to "About", homes_about_path, class: 'nav-link' %></li>

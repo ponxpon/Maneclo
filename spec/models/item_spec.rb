@@ -4,6 +4,7 @@ require 'rails_helper' # spec/rails_helper.rbを読み込む
 
 RSpec.describe Item, "モデルに関するテスト", type: :model do
   describe '実際に保存してみる' do
+    # FactoryBotでitemを作成
     let(:item) { FactoryBot.create(:item) }
     # let(:user) { FactoryBot.create(:user) }
     it "有効な登録内容の場合は保存されるか" do

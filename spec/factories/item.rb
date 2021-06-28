@@ -3,6 +3,7 @@
 FactoryBot.define do
   # どのモデルに対してデータ定義を行うのか記す
   factory :item do
+    # アソシエーション
     association :user
     association :category
     association :brand
