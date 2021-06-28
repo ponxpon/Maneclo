@@ -1,32 +1,30 @@
 <div class="container">
-  <!--<div class="">-->
-    <div class="row d-flex justify-content-center">
-      <!--ソートリンクはgem 'ransackの'のメソッド　昇順降順のソート機能-->
-      <div>
-        <%= sort_link(@q, :brand_id) do %>
-          <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >ブランド</button>
-        <% end %>
-      </div>
-      <div>
-        <%= sort_link(@q, :category_id) do %>
-          <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >カテゴリー</button>
-        <% end %>
-      </div>
-      <div>
-        <%= sort_link(@q, :price) do %>
-          <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >価格</button>
-        <% end %>
-      </div>
-      <div>
-        <!--search_form_forはRansack専用の検索ヘルパーメソッド-->
-        <%= search_form_for @q do |f| %>
-          <!--複数カラムの検索にはカラム名_or_カラム名　contは部分一致-->
-          <%= f.search_field :brand_brand_name_or_category_category_name_cont, class: 'rounded-pill mx-2 my-3' %>
-          <%= f.submit %>
-        <% end %>
-      </div>
+  <div class="row d-flex justify-content-center">
+    <!--ソートリンクはgem 'ransackの'のメソッド　昇順降順のソート機能-->
+    <div>
+      <%= sort_link(@q, :brand_id) do %>
+        <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >ブランド</button>
+      <% end %>
     </div>
-  <!--</div>-->
+    <div>
+      <%= sort_link(@q, :category_id) do %>
+        <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >カテゴリー</button>
+      <% end %>
+    </div>
+    <div>
+      <%= sort_link(@q, :price) do %>
+        <button class="btn btn-outline-dark btn-sm rounded-pill mx-2 my-3" >価格</button>
+      <% end %>
+    </div>
+    <div>
+      <!--search_form_forはRansack専用の検索ヘルパーメソッド-->
+      <%= search_form_for @q do |f| %>
+        <!--複数カラムの検索にはカラム名_or_カラム名　contは部分一致-->
+        <%= f.search_field :brand_brand_name_or_category_category_name_cont, class: 'rounded-pill mx-2 my-3' %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <!--服一覧表示-->
 <div class="container">

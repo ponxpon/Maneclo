@@ -1,17 +1,17 @@
-<div class="container-fluid text-center text-white">
+<div class="container-fluid text-center text-white px-0">
   <div class="top_image">
     <h1 class="home-text">Maneclo</h1>
     <h1>
       <%= link_to new_user_registration_path do %>
-        <button class="btn btn-outline-light mx-3" >Sign up</button>
+        <button class="btn btn-outline-light btn-lg mx-3 mt-5">Sign up</button>
       <% end %>
       <%= link_to new_user_session_path do %>
-        <button class="btn btn-outline-light mx-3" >Login</button>
+        <button class="btn btn-outline-light btn-lg mx-3 mt-5">Login</button>
       <% end %>
     </h1>
     <h1>
       <%= link_to users_guest_sign_in_path, method: :post do %>
-        <button class="btn btn-outline-light mx-3" >guest login（閲覧用）</button>
+        <button class="btn btn-outline-light btn-lg mx-3" >Guest Login（閲覧用）</button>
       <% end %>
     </h1>
   </div>

@@ -25,6 +25,20 @@
 }
 
 .home-text {
+  font-size: 9.5vw; // ビューポートの幅に対する割合
+  padding: 50px;
+}
+
+@media screen and (max-width: 767.98px) { // タブレット
+  .home-text {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 575.98px) { // スマホ
+  .home-text {
+    font-size: 60px;
+  }
 }
 
 .box1 {
@@ -36,15 +50,15 @@
 }
 
 .navbar {
-  position: relative;
+  position: relative; // 移動するときの基準が元いた位置になる
 }
 
 // ハンバーガーメニューでの条件分岐　リンクを中央と右寄せにする際に使ったCSS　この記述をしないとハンバーガーメニューの動作が少しおかしくなる
 @media (min-width: 992px) { // 横幅が992px以上だと有効
   .header-navbar-center{
-    position: absolute;
+    position: absolute; // 他の要素を無視して左上から移動
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0); // 要素の表示位置を移動
   }
   .header-navbar-right {
     position: absolute;
