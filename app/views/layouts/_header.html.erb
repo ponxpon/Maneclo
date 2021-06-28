@@ -21,6 +21,10 @@
       <ul class="navbar-nav header-navbar-right">
         <!--ユーザがログインしている時に表示-->
         <% if user_signed_in? %>
+          <!--カラムadminがtrueのuserにだけ表示-->
+          <% if current_user.admin.present? %>
+            <li><%= link_to "Admin", "/admin", class: 'nav-link' %></li>
+          <% end %>
           <li><%= link_to "About", homes_about_path, class: 'nav-link' %></li>
           <li><%= link_to "Contact", homes_contact_path, class: 'nav-link' %></li>
           <li><%= link_to "Logout", destroy_user_session_path, class: 'nav-link', method: :delete %></li>
