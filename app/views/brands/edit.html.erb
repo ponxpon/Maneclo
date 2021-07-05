@@ -1,7 +1,14 @@
-<%= render 'brand', brand: @brand %>
+<!--ブランドのユーザがログインしているユーザの場合表示-->
+<% if @brand.user == current_user %>
+  <%= render 'brand', brand: @brand %>
 
-<div class="container">
-  <div class="row">
-    <td><%= link_to 'Destroy', brand_path(@brand), method: :delete, data: { confirm: 'ブランドの服も全て消えますが、本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+  <div class="container">
+    <div class="row">
+      <td><%= link_to 'Destroy', brand_path(@brand), method: :delete, data: { confirm: 'ブランドの服も全て消えますが、本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="alert alert-danger"><%= "他人のブランド名を編集することはできません。" %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+<% end %>
