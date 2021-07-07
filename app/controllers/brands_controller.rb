@@ -1,4 +1,7 @@
 class BrandsController < ApplicationController
+  # 投稿者だけがブランドの編集・更新・削除ができる
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   # ブランド名一覧画面
   def index
     @brand = Brand.new
@@ -22,12 +25,6 @@ class BrandsController < ApplicationController
   # ブランド名編集画面
   def edit
     @brand = Brand.find(params[:id])
-    # 他人のデータを編集不可　他人のブランド名編集画面には遷移しない
-    if @brand.user == current_user
-      render "edit"
-    else
-      redirect_to brands_path, alert: "他人のブランド名を編集することはできません。"
-    end
   end
 
   # ブランド名の更新
@@ -51,5 +48,13 @@ class BrandsController < ApplicationController
 
   def brand_params
     params.require(:brand).permit(:brand_name, :user_id)
+  end
+
+  # ログインユーザが登録したユーザではない場合、redirect先に遷移
+  def ensure_correct_user
+    brand = Brand.find(params[:id])
+    if current_user.id != brand.user_id
+      redirect_to brands_path, alert: "権限がありません。"
+    end
   end
 end

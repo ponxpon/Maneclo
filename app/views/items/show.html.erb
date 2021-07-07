@@ -1,23 +1,16 @@
-<!--アイテムのユーザがログインしているユーザの場合表示-->
-<% if @item.user == current_user %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mt-3">
-        <%= attachment_image_tag @item, :item_image, format: 'jpeg', size: "500x500", fallback: "no-image.jpg", class: 'img-fluid' %>
-      </div>
-      <div class="col-md-6 my-auto">
-        <p><%= @item.purchase_date %></p>
-        <p><%= @item.brand.brand_name %></p>
-        <p><%= @item.category.category_name %></p>
-        <p><%= @item.introduction %></p>
-        <p>¥<%= @item.price %></p>
-      <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-success" %>
-      <%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mt-3">
+      <%= attachment_image_tag @item, :item_image, format: 'jpeg', size: "500x500", fallback: "no-image.jpg", class: 'img-fluid' %>
+    </div>
+    <div class="col-md-6 my-auto">
+      <p><%= @item.purchase_date %></p>
+      <p><%= @item.brand.brand_name %></p>
+      <p><%= @item.category.category_name %></p>
+      <p><%= @item.introduction %></p>
+      <p>¥<%= @item.price %></p>
+    <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-success" %>
+    <%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
     </div>
   </div>
-<% else %>
-  <div class="alert alert-danger"><%= "他人の服を見ることはできません。" %>
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-  </div>
-<% end %>
+</div>

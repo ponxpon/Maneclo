@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  # 投稿者だけが服の詳細を見る・編集・更新・削除ができる
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
+  
   # 服一覧画面
   def index
     # @items = Item.where(user_id: current_user.id).includes(:user).page(params[:page]).reverse_order.per(12)
@@ -57,23 +60,11 @@ class ItemsController < ApplicationController
   # 服詳細画面
   def show
     @item = Item.find(params[:id])
-    # 他人の服詳細画面には遷移しない
-    if @item.user == current_user
-      render "show"
-    else
-      redirect_to items_path, alert: "他人の服を見ることはできません。"
-    end
   end
 
   # 服編集画面
   def edit
     @item = Item.find(params[:id])
-    # 他人のデータを編集不可　他人の服編集画面には遷移しない
-    if @item.user == current_user
-      render "edit"
-    else
-      redirect_to items_path, alert: "他人の服のデータを編集することはできません。"
-    end
   end
 
   # 服の更新
@@ -113,5 +104,13 @@ class ItemsController < ApplicationController
 
   def brand_params
     params.require(:brands).permit(:brand_name, :user_id)
+  end
+  
+  # ログインユーザが登録したユーザではない場合、redirect先に遷移
+  def ensure_correct_user
+    item = Item.find(params[:id])
+    if current_user.id != item.user_id
+      redirect_to items_path, alert: "権限がありません。"
+    end
   end
 end
