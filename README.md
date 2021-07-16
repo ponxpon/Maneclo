@@ -29,10 +29,9 @@
 https://docs.google.com/spreadsheets/d/1adPYR-xkCKAjurCgZ1T5bS4msncBsalyWS60elkv2kk/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- OS：Amazon Linux release 2 (Karoo)
+- 言語：HTML,CSS,Ruby
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
